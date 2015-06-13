@@ -17,10 +17,9 @@ void setup(){
    pinMode(wv3n,OUTPUT);
 }
 void loop(){
-  while(Serial.available()){
+   while(Serial.available()){    
     incomingByte = Serial.read();
     Serial.println(incomingByte);
-    
     if(incomingByte=='u'){
         analogWrite(wv1p,0);
         analogWrite(wv1n,0);
@@ -73,8 +72,23 @@ void loop(){
         analogWrite(wv2n,0);
         analogWrite(wv2p,255);
     }
-    
-  }
+    else if(incomingByte == 's'){
+        analogWrite(wv1p,0);
+        analogWrite(wv1n,0);
+        analogWrite(wv2p,0);
+        analogWrite(wv2n,0);
+        analogWrite(wv3p,0);
+        analogWrite(wv3n,0);
+    }
+   } 
+  
+}
+ /* else if(!Serial.available()){analogWrite(wv1p,0);
+        analogWrite(wv1n,0);
+        analogWrite(wv2p,0);
+        analogWrite(wv2n,0);
+        analogWrite(wv3p,0);
+        analogWrite(wv3n,0);}
 }
 /*
 void straight()
